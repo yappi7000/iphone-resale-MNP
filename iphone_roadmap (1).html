@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone転売 島流し回避ロードマップ 2台→10台</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg: #0e0e0f;
+  --bg2: #161618;
+  --bg3: #1e1e21;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --text: #f0ede8;
+  --muted: #888680;
+  --muted2: #555350;
+
+  --ph1: #22c55e;
+  --ph1b: rgba(34,197,94,0.12);
+  --ph1d: #166534;
+
+  --ph2: #3b82f6;
+  --ph2b: rgba(59,130,246,0.12);
+  --ph2d: #1e3a5f;
+
+  --ph3: #f59e0b;
+  --ph3b: rgba(245,158,11,0.12);
+  --ph3d: #78350f;
+
+  --ph4: #a855f7;
+  --ph4b: rgba(168,85,247,0.12);
+  --ph4d: #4c1d95;
+
+  --rescue: #ef4444;
+  --rescueb: rgba(239,68,68,0.10);
+
+  --accent: #FF4E00;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+/* ===== ヘッダー ===== */
+.page-header {
+  padding: 56px 24px 48px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,78,0,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.header-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.header-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid rgba(255,78,0,0.4);
+  color: var(--accent);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 4px 14px; border-radius: 100px;
+  margin-bottom: 20px;
+}
+.header-tag::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  animation: blink 2s ease infinite;
+}
+@keyframes blink {
+  0%,100%{ opacity:1; } 50%{ opacity:0.3; }
+}
+.page-header h1 {
+  font-size: clamp(24px, 5vw, 42px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.page-header h1 em { color: var(--accent); font-style: normal; }
+.page-header p {
+  font-size: 14px; color: var(--muted); line-height: 1.8;
+}
+
+/* ===== サマリーバー ===== */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+@media(max-width:600px){ .summary { grid-template-columns: 1fr 1fr; } }
+.sum-item {
+  padding: 22px 20px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.sum-item:last-child { border-right: none; }
+.sum-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px; font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.sum-num span { color: var(--accent); }
+.sum-label { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+/* ===== タイムライン ===== */
+.timeline-section { padding: 40px 24px 32px; border-bottom: 1px solid var(--border); }
+.section-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+}
+.tl-table { width: 100%; border-collapse: collapse; }
+.tl-table td {
+  padding: 0; font-size: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.tl-table td:first-child {
+  width: 90px; padding: 10px 12px;
+  color: var(--muted); font-weight: 500;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+.tl-track { padding: 8px 12px; }
+.tl-inner { display: flex; gap: 4px; align-items: center; height: 20px; }
+.tl-seg {
+  height: 20px; border-radius: 3px;
+  display: flex; align-items: center;
+  padding: 0 6px; font-size: 10px;
+  font-weight: 700; white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+.tl-gap { flex: 1; }
+.s1 { background: var(--ph1b); color: var(--ph1); border: 1px solid rgba(34,197,94,0.3); }
+.s2 { background: var(--ph2b); color: var(--ph2); border: 1px solid rgba(59,130,246,0.3); }
+.s3 { background: var(--ph3b); color: var(--ph3); border: 1px solid rgba(245,158,11,0.3); }
+.s4 { background: var(--ph4b); color: var(--ph4); border: 1px solid rgba(168,85,247,0.3); }
+.sw { background: rgba(255,255,255,0.03); color: var(--muted2);
+      border: 1px dashed rgba(255,255,255,0.1); }
+
+/* ===== メインコンテンツ ===== */
+.main { max-width: 900px; margin: 0 auto; padding: 0 24px 64px; }
+
+/* フェーズヘッダー */
+.phase-hd {
+  display: flex; align-items: center; gap: 12px;
+  padding: 36px 0 16px;
+}
+.phase-tag {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 100px;
+  white-space: nowrap;
+}
+.pt1 { background: var(--ph1b); color: var(--ph1); border: 1px solid rgba(34,197,94,0.3); }
+.pt2 { background: var(--ph2b); color: var(--ph2); border: 1px solid rgba(59,130,246,0.3); }
+.pt3 { background: var(--ph3b); color: var(--ph3); border: 1px solid rgba(245,158,11,0.3); }
+.pt4 { background: var(--ph4b); color: var(--ph4); border: 1px solid rgba(168,85,247,0.3); }
+.ptr { background: var(--rescueb); color: var(--rescue); border: 1px solid rgba(239,68,68,0.3); }
+
+.phase-hd-text h2 {
+  font-size: 18px; font-weight: 700; line-height: 1.3;
+}
+.phase-hd-text p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* フェーズのポイント解説 */
+.phase-desc {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: #ccc;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.phase-desc strong { color: var(--text); }
+
+/* 注文カード */
+.order-grid { display: grid; gap: 12px; }
+
+.order-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.order-card:hover { border-color: var(--border2); }
+.order-card.final { border-color: rgba(34,197,94,0.4); }
+
+.order-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.order-idx {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0;
+}
+.i1,.i2 { background: var(--ph1b); color: var(--ph1); }
+.i3,.i4 { background: var(--ph2b); color: var(--ph2); }
+.i5,.i6,.i7 { background: var(--ph3b); color: var(--ph3); }
+.i8,.i9,.i10 { background: var(--ph4b); color: var(--ph4); }
+
+.order-title { flex: 1; font-size: 14px; font-weight: 700; }
+.method-badge {
+  font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px;
+  letter-spacing: 0.06em; white-space: nowrap;
+}
+.md { background: rgba(59,130,246,0.15); color: var(--ph2); border: 1px solid rgba(59,130,246,0.25); }
+.mp { background: rgba(34,197,94,0.15); color: var(--ph1); border: 1px solid rgba(34,197,94,0.25); }
+.mb { background: rgba(245,158,11,0.15); color: var(--ph3); border: 1px solid rgba(245,158,11,0.25); }
+
+.order-body { padding: 16px 18px; }
+
+/* 設定テーブル */
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+@media(max-width:600px){ .settings-grid { grid-template-columns: 1fr 1fr; } }
+
+.setting-item {}
+.setting-label {
+  font-size: 10px; font-weight: 700;
+  color: var(--muted); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 3px;
+}
+.setting-val { font-size: 13px; color: var(--text); font-weight: 500; }
+
+/* 解説ボックス */
+.explain-box {
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.75;
+  margin-top: 12px;
+}
+.ex-why { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); }
+.ex-tip { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+.ex-warn{ background: rgba(239,68,68,0.08);  border: 1px solid rgba(239,68,68,0.2); }
+.ex-star{ background: rgba(34,197,94,0.08);  border: 1px solid rgba(34,197,94,0.2); }
+
+.explain-box .ex-head {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.ex-why  .ex-head { color: var(--ph2); }
+.ex-tip  .ex-head { color: var(--ph3); }
+.ex-warn .ex-head { color: var(--rescue); }
+.ex-star .ex-head { color: var(--ph1); }
+.explain-box p { color: #ccc; }
+.explain-box strong { color: var(--text); }
+
+/* 待機コネクター */
+.connector {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0 2px 12px;
+}
+.conn-line {
+  width: 1px; height: 32px;
+  background: linear-gradient(to bottom, var(--border2), transparent);
+}
+.conn-text {
+  font-size: 11px; color: var(--muted);
+  font-style: italic;
+}
+
+/* 救済プラン */
+.rescue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+@media(max-width:560px){ .rescue-grid { grid-template-columns: 1fr; } }
+
+.rescue-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.rescue-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--rescue); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.rescue-title::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--rescue); border-radius: 50%;
+  flex-shrink: 0;
+}
+.rescue-step {
+  display: flex; gap: 8px;
+  font-size: 12px; color: #aaa;
+  line-height: 1.65; margin-bottom: 5px;
+}
+.rescue-step-n { color: var(--muted2); flex-shrink: 0; font-family: 'Inter', sans-serif; font-size: 11px; padding-top: 1px; }
+.rescue-step p strong { color: var(--text); }
+
+/* 鉄則ボックス */
+.rules-box {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 36px;
+}
+.rules-title {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media(max-width:600px){ .rules-grid { grid-template-columns: 1fr; } }
+
+.rule-item { display: flex; gap: 10px; }
+.rule-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px; font-weight: 800;
+  color: rgba(255,78,0,0.3); flex-shrink: 0; line-height: 1;
+}
+.rule-body {}
+.rule-body strong { font-size: 13px; display: block; margin-bottom: 3px; }
+.rule-body p { font-size: 12px; color: var(--muted); line-height: 1.65; }
+
+/* フッター */
+.page-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-tag">2025年4月 最新版</div>
+    <h1>島流し回避<em>完全</em>ロードマップ<br>2台スタート → <em>10台</em>達成</h1>
+    <p>クリーンApple ID・クレカ4〜9枚・配送＋ピックアップ両用の最適戦略</p>
+  </div>
+</div>
+
+<!-- サマリー -->
+<div class="summary">
+  <div class="sum-item">
+    <div class="sum-num"><span>10</span>台</div>
+    <div class="sum-label">目標台数</div>
+  </div>
+  <div class="sum-item">
+    <div class="sum-num">約<span>20</span>日</div>
+    <div class="sum-label">目安期間</div>
+  </div>
+  <div class="sum-item">
+    <div class="sum-num"><span>4〜9</span>枚</div>
+    <div class="sum-label">使用クレカ枚数</div>
+  </div>
+  <div class="sum-item">
+    <div class="sum-num">配送<span>＋</span>ピック</div>
+    <div class="sum-label">購入方式</div>
+  </div>
+</div>
+
+<!-- タイムライン -->
+<div class="timeline-section">
+  <div class="section-label">全体タイムライン</div>
+  <table class="tl-table">
+    <tr>
+      <td>Phase 1</td>
+      <td class="tl-track">
+        <div class="tl-inner">
+          <div class="tl-seg s1" style="width:14%">注文①②</div>
+          <div class="tl-seg sw" style="width:9%">待機</div>
+          <div class="tl-gap"></div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Phase 2</td>
+      <td class="tl-track">
+        <div class="tl-inner">
+          <div class="tl-seg sw" style="width:10%"></div>
+          <div class="tl-seg s2" style="width:18%">注文③④</div>
+          <div class="tl-seg sw" style="width:9%">待機</div>
+          <div class="tl-gap"></div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Phase 3</td>
+      <td class="tl-track">
+        <div class="tl-inner">
+          <div class="tl-seg sw" style="width:22%"></div>
+          <div class="tl-seg s3" style="width:22%">注文⑤⑥⑦</div>
+          <div class="tl-seg sw" style="width:9%">待機</div>
+          <div class="tl-gap"></div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Phase 4</td>
+      <td class="tl-track">
+        <div class="tl-inner">
+          <div class="tl-seg sw" style="width:42%"></div>
+          <div class="tl-seg s4" style="width:22%">注文⑧⑨⑩</div>
+          <div class="tl-gap"></div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== メインコンテンツ ===== -->
+<div class="main">
+
+<!-- ========== PHASE 1 ========== -->
+<div class="phase-hd">
+  <span class="phase-tag pt1">Phase 1 &nbsp;Day 1</span>
+  <div class="phase-hd-text">
+    <h2>2台スタート — まず環境を検証する</h2>
+    <p>ProとPro Maxを1台ずつ。機種を分けて個人利用っぽく見せるのが基本。</p>
+  </div>
+</div>
+
+<div class="phase-desc">
+  <strong>このフェーズの目的：</strong>自分の環境でごちゅありが来るかを確認すること。<br>
+  「注文①のごちゅありを確認してから②を入れる」——これがロードマップ全体の大原則です。前の注文が処理中のまま次を入れると、<strong>未完了注文が複数存在する状態</strong>となり、Appleのシステムから転売ヤーと判定されて島流しリスクが急上昇します。焦らず1台ずつ確認しながら進めてください。
+</div>
+
+<div class="order-grid">
+
+  <!-- 注文① -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i1">1</div>
+      <div class="order-title">iPhone 17 Pro 256GB</div>
+      <div class="method-badge md">📦 配送</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">クリーンID</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードA（Apple Pay登録済み）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">通常Safari</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF済み</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">好みのカラー</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台のみ</div>
+        </div>
+      </div>
+      <div class="explain-box ex-why">
+        <div class="ex-head">&#128161; なぜクリーンIDで通常Safariか</div>
+        <p>クリーンID（購入履歴が少ないID）は<strong>Appleのリスクスコアが低い</strong>状態です。初回注文は「一般ユーザー」として最もクリーンな状態で挑むのが鉄則。Apple PayはカードAの番号を仮想番号に変換して送信するため、<strong>クレカの実番号が変わり別人扱いされやすくなります。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-text">注文①のごちゅあり確認後（数時間〜2日）→ 注文②へ</div>
+  </div>
+
+  <!-- 注文② -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i2">2</div>
+      <div class="order-title">iPhone 17 Pro Max 256GB</div>
+      <div class="method-badge mp">🏪 ピックアップ</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">ゲスト購入</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードB（別番号）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">プライベートモード</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF済み</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">①と別カラー推奨</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台のみ</div>
+        </div>
+      </div>
+      <div class="explain-box ex-star">
+        <div class="ex-head">&#9733; Pro Maxをピックアップにする理由</div>
+        <p><strong>ピックアップの最大のメリットは「電子になってもカード枠を消費しない」こと。</strong>配送で島流しになるとクレカの枠が最大2ヶ月ロックされますが、ピックが電子になっても枠は消費されないため、すぐ別の方法でリトライできます。Pro Maxはピックのライバルが多いため根気が必要ですが、リスクが低い。在庫復活は朝7〜10時が多く、関東から順に西へ復活する傾向があります。</p>
+      </div>
+      <div class="explain-box ex-tip" style="margin-top:8px;">
+        <div class="ex-head">&#128161; ゲスト購入の注意点</div>
+        <p>ゲスト購入は注文状況の確認方法が異なります。注文確認メールに記載された<strong>注文番号＋メールアドレス</strong>をAppleの注文確認ページに入力して状況を確認してください。ごちゅありメールも必ず確認できます。</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /order-grid -->
+
+
+<!-- ========== PHASE 2 ========== -->
+<div class="phase-hd">
+  <span class="phase-tag pt2">Phase 2 &nbsp;Day 3〜7</span>
+  <div class="phase-hd-text">
+    <h2>4台へ — 成功した環境を記録して再現</h2>
+    <p>Phase 1のごちゅあり確認後、同じ条件を再現しながら2台追加。</p>
+  </div>
+</div>
+
+<div class="phase-desc">
+  <strong>このフェーズの核心：「当たり環境のメモ」を作る。</strong><br>
+  Phase 1でごちゅありが来た注文の「カード・ID/ゲスト・ブラウザ・IP」を必ずメモしてください。この「当たり環境」を再現するのが、以降のフェーズで島流しを回避する最短ルートです。来なかった環境は一旦休ませて、来た環境を優先して使います。
+</div>
+
+<div class="order-grid">
+
+  <!-- 注文③ -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i3">3</div>
+      <div class="order-title">iPhone 17 Pro 256GB</div>
+      <div class="method-badge md">📦 配送</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">クリーンID（①と同じ）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードA Apple Pay（別仮想番号）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">通常Safari</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF済み</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">①と異なるカラー</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+      <div class="explain-box ex-why">
+        <div class="ex-head">&#128161; Apple PayでカードAを再利用できる理由</div>
+        <p>Apple Payに登録すると、実際のカード番号とは<strong>別の仮想番号（デバイスアカウント番号）</strong>が生成されます。同じカードAでもApple Payを使うと送信される番号が変わるため、Appleのシステム上では<strong>別のカードとして認識される可能性</strong>があります。カードAは既にApple Payに登録済みのはずなので、この番号を積極的に活用してください。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-text">注文③のごちゅあり確認後 → 注文④へ</div>
+  </div>
+
+  <!-- 注文④ -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i4">4</div>
+      <div class="order-title">iPhone 17 Pro Max 256GB</div>
+      <div class="method-badge mb">🔄 ピック→配送切替</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">ゲスト購入</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードC（新しいカード）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">プライベートモード</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF済み</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">②と異なるカラー</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+      <div class="explain-box ex-tip">
+        <div class="ex-head">&#128161; 2段構えの戦略</div>
+        <p>まずピックアップを試して、「電子」になったら<strong>そのまま配送に切り替える</strong>のが最も効率的な立ち回りです。電子になってもカード枠は消費されないため、すぐ配送に切り替えて注文できます。ただし電子になった後、次回注文時は<strong>自動で配送が選択される仕様</strong>になるので、再度ピックを試したい場合は一度キャンセルして選び直してください。</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /order-grid -->
+
+
+<!-- ========== PHASE 3 ========== -->
+<div class="phase-hd">
+  <span class="phase-tag pt3">Phase 3 &nbsp;Day 8〜14</span>
+  <div class="phase-hd-text">
+    <h2>7台へ — 新カード・新環境を追加投入</h2>
+    <p>ここから本格的にカードの枚数を活かして枠を広げる。</p>
+  </div>
+</div>
+
+<div class="phase-desc">
+  <strong>このフェーズの戦略：環境の多様化。</strong><br>
+  Phase 1・2で得た当たり環境の「パターン」をベースに、新しいカード・別のIPアドレスを組み合わせて注文枠を増やします。ここでのポイントは<strong>「同じ機種・同じカラーの連続注文を避ける」</strong>こと。Appleのシステムは同一機種の繰り返し購入を最も強い転売シグナルとして検知します。ProとPro Maxを交互に、カラーも変えながら進めてください。
+</div>
+
+<div class="order-grid">
+
+  <!-- 注文⑤ -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i5">5</div>
+      <div class="order-title">iPhone 17 Pro 256GB</div>
+      <div class="method-badge md">📦 配送</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">別のクリーンID</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードD（新規カード）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">プライベートモード</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">既存と別カラー</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+      <div class="explain-box ex-why">
+        <div class="ex-head">&#128161; 新しいクリーンIDを使う理由</div>
+        <p>Phase 1で使ったIDは既に購入履歴が付き始めています。<strong>購入履歴がゼロのIDは最もリスクスコアが低い</strong>状態なので、新しいクリーンIDを使うことでごちゅあり率が上がります。クリーンIDはあらかじめ複数作っておくか、家族・知人のIDを借りる（本人名義での購入が前提）方法があります。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-text">注文⑤のごちゅあり確認後 → 注文⑥へ</div>
+  </div>
+
+  <!-- 注文⑥ -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i6">6</div>
+      <div class="order-title">iPhone 17 Pro Max 256GB</div>
+      <div class="method-badge mb">🔄 ピック優先→配送</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">ゲスト購入</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードE</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">プライベートモード</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">在庫があるもの</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+      <div class="explain-box ex-tip">
+        <div class="ex-head">&#128161; ピックの在庫復活タイミング</div>
+        <p>在庫の復活は<strong>朝7時〜10時ごろが最多</strong>で、関東から順次西へ復活していく傾向があります。Xでピックアップ通知を発信しているアカウントをフォローしておくと、復活した瞬間に把握できます。ピックは手間がかかりますが、当日受け取り→即売却ができるため<strong>キャッシュフロー最速</strong>の手法です。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-text">注文⑥のごちゅあり確認後 → 注文⑦へ</div>
+  </div>
+
+  <!-- 注文⑦ -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i7">7</div>
+      <div class="order-title">iPhone 17 Pro 256GB</div>
+      <div class="method-badge md">📦 配送</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">①〜⑥で最速ごちゅありの環境</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードF</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">成功した方と同じ</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">既存と別カラー</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+      <div class="explain-box ex-star">
+        <div class="ex-head">&#9733; Phase 3終了時点でやること</div>
+        <p>ここまで来ると「ごちゅありが来た環境」と「来なかった環境」のデータが揃います。<strong>来た環境の共通点を探してください。</strong>「IDかゲストか」「カードの種類」「SafariかプライベートかSafari」のどれが効いているかが見えてくるはずです。これが<strong>あなた専用の当たり環境</strong>になります。</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /order-grid -->
+
+
+<!-- ========== PHASE 4 ========== -->
+<div class="phase-hd">
+  <span class="phase-tag pt4">Phase 4 &nbsp;Day 14〜20</span>
+  <div class="phase-hd-text">
+    <h2>10台達成 — 当たり環境の量産フェーズ</h2>
+    <p>蓄積した環境データをフル活用して残り3台を確実に積み上げる。</p>
+  </div>
+</div>
+
+<div class="phase-desc">
+  <strong>このフェーズの思想：「再現性」が全て。</strong><br>
+  ここまでの検証で「何をすればごちゅありが来るか」が見えているはずです。Phase 4は新しいことを試す段階ではなく、<strong>成功した環境をカードだけ変えて再現する</strong>フェーズです。カードを変えることで別人判定が維持されます。焦らず1台ずつ確認しながら積み上げてください。
+</div>
+
+<div class="order-grid">
+
+  <!-- 注文⑧ -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i8">8</div>
+      <div class="order-title">iPhone 17 Pro or Pro Max 256GB</div>
+      <div class="method-badge md">📦 配送</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">当たり環境を再現</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードG（未使用）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">成功環境と同じ</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">買取が高いカラー優先</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-text">注文⑧のごちゅあり確認後 → 注文⑨へ</div>
+  </div>
+
+  <!-- 注文⑨ -->
+  <div class="order-card">
+    <div class="order-head">
+      <div class="order-idx i9">9</div>
+      <div class="order-title">iPhone 17 Pro or Pro Max 256GB</div>
+      <div class="method-badge mp">🏪 ピックアップ</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">ゲスト購入</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">カードH（未使用）</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">プライベートモード</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">在庫があるもの</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+      <div class="explain-box ex-tip">
+        <div class="ex-head">&#128161; ピックと配送を交互に使う理由</div>
+        <p>同じ手法を連続して使うより、<strong>配送とピックを交互に使い分ける</strong>ことでAppleのパターン検知を分散できます。また配送が島流しになっている期間中もピックで仕入れを継続できるため、<strong>機会損失を最小化</strong>できます。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-text">注文⑨のごちゅあり確認後 → 注文⑩へ</div>
+  </div>
+
+  <!-- 注文⑩ -->
+  <div class="order-card final">
+    <div class="order-head">
+      <div class="order-idx i10">10</div>
+      <div class="order-title">iPhone 17 Pro or Pro Max 256GB &nbsp;🎉 10台達成</div>
+      <div class="method-badge mb">🔄 配送＋ピック</div>
+    </div>
+    <div class="order-body">
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-label">Apple ID</div>
+          <div class="setting-val">全体で最速だった環境</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カード</div>
+          <div class="setting-val">A〜Hで未使用のもの</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">ブラウザ</div>
+          <div class="setting-val">成功環境と同じ</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">IPアドレス</div>
+          <div class="setting-val">機内モードON→OFF</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">カラー</div>
+          <div class="setting-val">買取金額が高いものを優先</div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-label">注文数</div>
+          <div class="setting-val">1台</div>
+        </div>
+      </div>
+      <div class="explain-box ex-star">
+        <div class="ex-head">&#9733; 10台達成後にやること</div>
+        <p>おめでとうございます！ここまで来たら<strong>環境データが揃った財産</strong>があります。「どのカード・どのID/ゲスト・どのブラウザでごちゅありが来たか」を整理してメモに残してください。このデータは<strong>次のiPhone 18シリーズでもそのまま使い回せます。</strong>また相場を確認しながら売却タイミングを判断し、クレカの繰り上げ返済をして枠を回復させれば次のサイクルに入れます。</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /order-grid -->
+
+
+<!-- ========== 救済プラン ========== -->
+<div class="phase-hd">
+  <span class="phase-tag ptr">救済プラン</span>
+  <div class="phase-hd-text">
+    <h2>島流し・電子になったときの立ち回り</h2>
+    <p>4パターン別に対処法を整理。どれに当てはまるか確認してください。</p>
+  </div>
+</div>
+
+<div class="rescue-grid">
+  <div class="rescue-card">
+    <div class="rescue-title">パターンA｜ごちゅありが2日以上来ない</div>
+    <div class="rescue-step"><span class="rescue-step-n">1.</span><p><strong>キャンセルしない。</strong>待てばごちゅありが来る可能性がある。相場が続いている限り待つのが正解。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">2.</span><p>別の環境（別カード・別IP）で<strong>1台だけ試し注文</strong>を入れる。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">3.</span><p>新環境でごちゅありが来れば、それが現在の<strong>当たり環境</strong>。記録する。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">4.</span><p>島流し中の注文はごちゅありが来たタイミングで<strong>通常通り売却</strong>すればOK。</p></div>
+  </div>
+
+  <div class="rescue-card">
+    <div class="rescue-title">パターンB｜ごちゅあり後に発送されない</div>
+    <div class="rescue-step"><span class="rescue-step-n">1.</span><p><strong>絶対にキャンセルしない。</strong>キャンセルするとカード枠が最大2ヶ月ロックされる。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">2.</span><p>到着を待ちながら<strong>別環境で次の注文</strong>を進める。待機中も動けるのが強み。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">3.</span><p>到着後は相場を確認して<strong>即売却</strong>。相場が下がっていても基本的には売り切る。</p></div>
+  </div>
+
+  <div class="rescue-card">
+    <div class="rescue-title">パターンC｜電子になった（ピック不可）</div>
+    <div class="rescue-step"><span class="rescue-step-n">1.</span><p><strong>配送注文に切り替えて</strong>同じ環境で試す。電子でもカード枠は消費されていない。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">2.</span><p>電子になったIDは<strong>しばらく休ませる。</strong>焦って同じIDで試しても電子が続くだけ。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">3.</span><p>別ID・別ゲスト・別カードで<strong>新規スタート。</strong>クリーンな環境に戻すのが最速。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">4.</span><p>再度ピックを試したいときは<strong>一度注文をキャンセル</strong>してピックを選び直す。</p></div>
+  </div>
+
+  <div class="rescue-card">
+    <div class="rescue-title">パターンD｜全環境が島流し状態</div>
+    <div class="rescue-step"><span class="rescue-step-n">1.</span><p>Xで他の人の<strong>ごちゅあり報告を確認。</strong>自分だけか全体的に厳しい時期かを判断。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">2.</span><p>Appleのセキュリティが<strong>緩む曜日・時間帯</strong>を狙う。Xの最新情報を毎日チェック。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">3.</span><p>全注文を<strong>待機しながら</strong>次の注文環境（新カード・新ID）を準備する期間にする。</p></div>
+    <div class="rescue-step"><span class="rescue-step-n">4.</span><p><strong>無理をしない。</strong>相場が続く限り粛々と待つ。焦りがキャンセルや多重注文を招く。</p></div>
+  </div>
+</div>
+
+<!-- 3大鉄則 -->
+<div class="rules-box">
+  <div class="rules-title">&#128091; 島流し回避 3大鉄則</div>
+  <div class="rules-grid">
+    <div class="rule-item">
+      <div class="rule-num">01</div>
+      <div class="rule-body">
+        <strong>焦らない</strong>
+        <p>ごちゅあり確認前に次を入れると共倒れになる。1台ずつ確実に進める。</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">02</div>
+      <div class="rule-body">
+        <strong>成功した環境を記録する</strong>
+        <p>当たり環境の再現が最短ルート。カード・ID/ゲスト・ブラウザをメモ必須。</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">03</div>
+      <div class="rule-body">
+        <strong>キャンセルしない</strong>
+        <p>島流し中でもキャンセルするとカード枠が2ヶ月ロック。待つのが正解。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<!-- フッター -->
+<div class="page-footer">
+  2025年4月現在の情報をもとに作成。Appleのセキュリティは日々変化するため、Xで最新情報を確認しながら検証を続けてください。
+</div>
+
+</body>
+</html>
