@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone転売で本当に稼げるの？実体験から語る完全ガイド【2025年版】</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap');
+
+  :root {
+    --black: #111111;
+    --white: #FAFAF8;
+    --accent: #FF4E00;
+    --accent-light: #FFF0EB;
+    --gray: #888888;
+    --light-gray: #F4F4F2;
+    --border: #E5E5E0;
+    --success-bg: #EFF8F4;
+    --success-border: #A8D8C0;
+    --success-text: #1C7C4A;
+    --warn-bg: #FFF8E1;
+    --warn-border: #FFD54F;
+    --warn-text: #E65100;
+    --danger-bg: #FFEBEE;
+    --danger-border: #EF9A9A;
+    --danger-text: #C62828;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.9;
+    font-size: 16px;
+  }
+
+  /* ヒーロー */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 56px 24px 44px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(22px, 5vw, 34px);
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero-desc { color: #aaa; font-size: 14px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: wrap;
+    border-top: 1px solid #2a2a2a;
+    padding-top: 28px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 11px; color: #777; margin-top: 5px; }
+
+  /* レイアウト */
+  .container { max-width: 740px; margin: 0 auto; padding: 0 20px; }
+
+  /* 目次 */
+  .toc {
+    background: var(--light-gray);
+    border-left: 4px solid var(--accent);
+    padding: 22px 26px;
+    margin: 40px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .toc-head {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  .toc ol { padding-left: 18px; display: grid; gap: 5px; }
+  .toc li { font-size: 14px; }
+  .toc a { color: var(--black); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+
+  /* セクション */
+  .section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+  .sec-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-size: clamp(20px, 4vw, 27px);
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  .section h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    line-height: 1.5;
+  }
+  .section p { margin-bottom: 16px; color: #222; }
+
+  /* セクション画像 */
+  .sec-img-wrap { margin: 24px 0; }
+  .sec-img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    object-fit: cover;
+    max-height: 380px;
+    background: #eee;
+  }
+  .sec-img-cap {
+    font-size: 12px;
+    color: var(--gray);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* 読者チェック */
+  .reader-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 22px 0;
+  }
+  @media(max-width:520px){ .reader-grid { grid-template-columns: 1fr; } }
+  .rbox {
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+  .rbox.yes { background: var(--success-bg); border: 1px solid var(--success-border); }
+  .rbox.no  { background: var(--accent-light); border: 1px solid #FFBDA0; }
+  .rbox .rlabel {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .rbox.yes .rlabel { color: var(--success-text); }
+  .rbox.no  .rlabel { color: var(--warn-text); }
+  .rbox ul { padding-left: 16px; }
+  .rbox li { margin-bottom: 5px; }
+
+  /* 価格テーブル */
+  .price-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  .price-table th {
+    background: var(--black);
+    color: #fff;
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .price-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); }
+  .price-table tr.highlight td { background: var(--accent-light); font-weight: 700; }
+
+  /* 利益ハイライト */
+  .profit-box {
+    background: var(--black);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    margin: 24px 0;
+  }
+  .profit-label { font-size: 12px; color: #888; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .profit-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .profit-note { font-size: 13px; color: #999; }
+
+  /* ボックス類 */
+  .tip-box, .warn-box, .danger-box {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .tip-box   { background: var(--accent-light);   border: 1px solid #FFBDA0; }
+  .warn-box  { background: var(--warn-bg);         border: 1px solid var(--warn-border); }
+  .danger-box{ background: var(--danger-bg);        border: 2px solid var(--danger-border); }
+  .box-head  { font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .tip-box   .box-head { color: var(--warn-text); }
+  .warn-box  .box-head { color: #BF6000; }
+  .danger-box .box-head{ color: var(--danger-text); }
+
+  /* ステップ */
+  .steps { margin: 20px 0; display: grid; gap: 14px; }
+  .step  { display: flex; gap: 14px; align-items: flex-start; }
+  .step-n {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    background: var(--black);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 700;
+    margin-top: 2px;
+  }
+  .step-body { flex: 1; font-size: 15px; }
+  .step-body strong { display: block; margin-bottom: 2px; font-size: 15px; }
+
+  /* テクニックグリッド */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+  }
+  .tech-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .tech-card-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .tech-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .tech-card p  { font-size: 13px; color: #444; line-height: 1.75; }
+  code {
+    background: var(--light-gray);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: monospace;
+    word-break: break-all;
+  }
+
+  /* 買取屋リスト */
+  .buy-list { margin: 18px 0; }
+  .buy-item {
+    display: flex; gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .buy-rank {
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--accent);
+    width: 32px; text-align: center;
+    line-height: 1; margin-top: 2px;
+  }
+  .buy-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .buy-content p  { font-size: 14px; color: #555; }
+
+  /* まとめグリッド */
+  .sum-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 22px 0;
+  }
+  @media(max-width:480px){ .sum-grid { grid-template-columns: 1fr; } }
+  .sum-card {
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 14px;
+  }
+  .sum-card.green  { background: var(--success-bg); border: 1px solid var(--success-border); }
+  .sum-card.orange { background: var(--accent-light); border: 1px solid #FFBDA0; }
+  .sum-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .sum-card ul { padding-left: 16px; }
+  .sum-card li { margin-bottom: 5px; }
+
+  /* CTA */
+  .cta-wrap {
+    background: var(--black);
+    color: #fff;
+    text-align: center;
+    padding: 48px 24px;
+    margin: 48px -20px 0;
+  }
+  .cta-wrap h3 { font-size: 21px; font-weight: 900; margin-bottom: 10px; line-height: 1.45; }
+  .cta-wrap p  { color: #aaa; font-size: 14px; margin-bottom: 24px; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 15px 36px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* フッター */
+  .footer {
+    padding: 32px 0;
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 14px; }
+  .tag {
+    background: var(--light-gray);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px; color: #555;
+  }
+  ul.plain { padding-left: 20px; margin: 10px 0; }
+  ul.plain li { margin-bottom: 6px; font-size: 15px; }
+</style>
+</head>
+<body>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-badge">2025年4月 最新版</div>
+  <h1>iPhone転売で<em>本当に</em>稼げるの？<br>実体験から語る完全ガイド</h1>
+  <p class="hero-desc">iPhone 13から参戦・1シーズンで会社員の年収分を稼いだ経験をもとに解説します。</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">¥23,700</div>
+      <div class="stat-label">1台あたりの利益（4/17現在）</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">110台</div>
+      <div class="stat-label">今季実際に購入した台数</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">約3ヶ月</div>
+      <div class="stat-label">通常の利益が出る期間</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 目次 -->
+<div class="toc">
+  <div class="toc-head">📋 目次</div>
+  <ol>
+    <li><a href="#intro">はじめに</a></li>
+    <li><a href="#what">iPhone転売とは何か？</a></li>
+    <li><a href="#period">利益が出る期間</a></li>
+    <li><a href="#how-to-buy">iPhoneの買い方</a></li>
+    <li><a href="#bulk">大量に購入した実例</a></li>
+    <li><a href="#payment">決済のしくみ</a></li>
+    <li><a href="#techniques">ごちゅありが来やすくなる方法</a></li>
+    <li><a href="#pickup">ピックアップ（店舗受け取り）</a></li>
+    <li><a href="#buyers">買取屋の選び方</a></li>
+    <li><a href="#risks">落とし穴とリスク</a></li>
+  </ol>
+</div>
+
+<!-- ⓪ はじめに -->
+<div class="section" id="intro">
+  <div class="sec-num">⓪ はじめに</div>
+  <h2>この記事を書いた理由</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://images.macrumors.com/t/xkT_fYSjBiV_fGpz_PZKcOhWUng=/1600x0/article-new/2015/09/apple_store_display_models_iphone_6s.jpg" alt="Apple Storeの店内ディスプレイ" onerror="this.style.background='#ddd';this.alt='Apple Store'">
+    <div class="sec-img-cap">Apple Store（イメージ）</div>
+  </div>
+
+  <p>Xで「iPhone転売で数万〜数十万円の利益出ました！」というポストをよく見かけますよね。でも、こんな疑問を持ちませんか？</p>
+
+  <div class="reader-grid">
+    <div class="rbox yes">
+      <div class="rlabel">✅ この記事が役立つ人</div>
+      <ul>
+        <li>本当に稼げるか知りたい</li>
+        <li>詐欺じゃないか心配</li>
+        <li>今から始めても遅くないか</li>
+        <li>やり方がわからない</li>
+        <li>注文したけど届かない</li>
+        <li>副業を探している</li>
+      </ul>
+    </div>
+    <div class="rbox no">
+      <div class="rlabel">🚫 読まなくていい人</div>
+      <ul>
+        <li>転売・物販に興味がない</li>
+        <li>すでに100万円以上稼いでいる<br>（この記事は初心者向けです）</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>副業を始めたいけど何からやれば良いかわからないという方や、iPhone転売についての質問DMも多くいただくので、今まさに旬なiPhone転売について解説することにしました。</p>
+
+  <p>僕自身はiPhone 13の頃からやっていて、メインの手法ではないものの、1シーズンで会社員の年収ほどの利益を出した経験があります。</p>
+
+  <div class="tip-box">
+    <div class="box-head">📌 読み方について</div>
+    ①〜③は基礎知識の解説です。ある程度経験がある方は <strong>④から</strong> 読んでもOK。ただし④以降、特に⑨のリスクの話は最後まで必ず読んでください。
+  </div>
+</div>
+
+<!-- ① iPhone転売とは -->
+<div class="section" id="what">
+  <div class="sec-num">① iPhone転売とは何か？</div>
+  <h2>仕組みは驚くほどシンプルです</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://images.macrumors.com/t/9s5bJjkE3XqQr8PiY7DyYHfvFHo=/1600x/article-new/2020/10/iphone-12-unboxing-hero.jpg" alt="iPhone開封イメージ" onerror="this.style.background='#ddd'">
+    <div class="sec-img-cap">Apple Storeで定価購入し、買取屋でプレミア価格で売る</div>
+  </div>
+
+  <p>Apple Storeで定価のiPhoneを購入し、「買取屋」と呼ばれるお店にプレミア価格で売って利益を出す方法です。</p>
+
+  <p>iPhone 17 Pro Max 256GBを例にすると——</p>
+
+  <table class="price-table">
+    <tr><th>項目</th><th>金額</th></tr>
+    <tr><td>Apple Store定価</td><td>194,800円</td></tr>
+    <tr><td>買取屋の買取金額（4/17現在）</td><td>218,500円</td></tr>
+    <tr class="highlight"><td>💰 差額（利益）</td><td>+23,700円</td></tr>
+  </table>
+
+  <div class="profit-box">
+    <div class="profit-label">1台売るだけで</div>
+    <div class="profit-num">+¥23,700</div>
+    <div class="profit-note">会社員時代の日給と変わらないか、それ以上の金額です</div>
+  </div>
+
+  <h3>なぜ買取屋はプレミア価格で買ってくれるのか？</h3>
+
+  <p>日本のiPhoneは世界的に見てかなり安い価格帯に位置しています。アメリカに次いで世界2番目に安い水準です。</p>
+
+  <p>定価が高い国の業者からすれば、プレミア価格でも十分に安い。買取屋はドバイや香港などのハブ（中継地）を経由して、さらに需要の高い国へ輸出して利益を得ています。</p>
+
+  <div class="tip-box">
+    <div class="box-head">💡 消費税還付という仕組み</div>
+    海外に輸出した場合、消費税の還付を受けられます。そのため、仮にトントンやわずかなマイナスで売っても、後日10%が戻ってくる。これが買取屋の利益構造です。
+  </div>
+</div>
+
+<!-- ② 期間 -->
+<div class="section" id="period">
+  <div class="sec-num">② iPhone転売の期間</div>
+  <h2>基本は3ヶ月。でも今年は異例の展開</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://i.statcdn.com/Infographic/images/normal/13148.jpeg" alt="iPhoneの世界各国価格比較" onerror="this.style.background='#ddd'">
+    <div class="sec-img-cap">日本のiPhoneは世界的に見て安い水準（参考：Statista）</div>
+  </div>
+
+  <p>例年は9月の新型iPhone発売後、12月末にかけて徐々に利益が縮小していくパターンです。iPhone 16 Pro Maxの推移を見ると、まさにその教科書通りの流れでした。</p>
+
+  <div class="warn-box">
+    <div class="box-head">⚠️ 2025年は異例の状況</div>
+    iPhone 17は4月現在もまだ利益が出ています。これはiPhone 13（円安の影響で翌年7月まで利益継続）以来の異例の事態です。<br><br>
+    円安・メモリ高騰・AI対応向けの買い替え需要・iPhone 18の発売延期や値上げ噂・ドバイや香港の在庫枯渇など、複数の要因が重なっていると見られますが、正確なところはよくわかっていないのが現状です。
+  </div>
+
+  <p>いつまで続くかは不明ですが、ここまで伸びている状況を考えると、<strong>夏頃まで今の価格水準が維持される可能性は十分にあります。</strong></p>
+</div>
+
+<!-- ③ 買い方 -->
+<div class="section" id="how-to-buy">
+  <div class="sec-num">③ iPhoneの買い方</div>
+  <h2>Apple Storeでの購入手順</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://support.apple.com/library/content/dam/edam/applecare/images/en_US/ios/ios16-iphone-13-pro-wallet-add-credit-debit-card.png" alt="Apple Payの設定画面" onerror="this.style.background='#ddd'">
+    <div class="sec-img-cap">Apple Payにカードを登録しておくとスムーズです</div>
+  </div>
+
+  <h3>機種・カラー・容量の選び方</h3>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">
+        <strong>機種：Pro か Pro Max</strong>
+        Pro Maxのほうが買取金額が高くなりやすいですが、その分ライバルも多い。Pro Maxは海外発送、Proは国内発送のパターンが多く、到着日にも差が出ます。
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">
+        <strong>カラー：シルバー → ブルー → オレンジ の順で買取が高め</strong>
+        ただし高い色ほどライバルが多く、届くのも遅くなりがちです。
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body">
+        <strong>容量：256GB → 512GB → 1TB の順で買取が高め</strong>
+        初心者は256GBが無難。512GB・1TBはライバルが少なく、早く届く可能性もあります。なお2TBは利益が出ません。
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-body">
+        <strong>その他の設定</strong>
+        下取りなし・SIMフリー・一括払い・保証なし を選択します。
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-body">
+        <strong>カートに入れて購入</strong>
+        Apple IDまたはゲストで購入。名前・住所・メールアドレス・電話番号・クレジットカード情報を入力するだけ。Apple IDなら入力済みの情報がほぼそのまま使えます。
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">6</div>
+      <div class="step-body">
+        <strong>配送か受け取りを選ぶ</strong>
+        初心者は「配送」からスタートがおすすめ。店舗受け取り（ピックアップ）は在庫がある時だけで、すぐ枯渇します。詳細は⑦で説明します。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 大量購入 -->
+<div class="section" id="bulk">
+  <div class="sec-num">④ 大量に購入した実例</div>
+  <h2>10個×11回 ＝ 110台注文した話</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://i0.wp.com/airphotography.jp/wp-content/uploads/2025/09/iPhone17ProMax_DeepBlue_00.jpg" alt="iPhone 17 Pro Max 開封" onerror="this.style.background='#ddd'">
+    <div class="sec-img-cap">iPhone 17 Pro Max（参考画像）</div>
+  </div>
+
+  <p>発売当初は1回2台までの制限でしたが、現在は10台まで注文できます。10個を11回注文し、約2ヶ月後に到着しました。</p>
+
+  <div class="tip-box">
+    <div class="box-head">📦 「島流し」とは？</div>
+    購入時の配送予定日が後ろ倒しにされること。Appleからこんなメールが届きます。<br>
+    <em>「ご注文の商品の発送が遅れています。新しい配送予定日は○月○日です」</em><br><br>
+    大量に買っている転売ヤーと判断された場合に発生しやすく、写真の実績はその島流し分がまとめて届いた形です。
+  </div>
+
+  <h3>「ごちゅあり」とは？</h3>
+
+  <p>「ご注文ありがとうございます」というメールのこと。このメールが届くと注文が確定した状態で、通常は数日以内に発送されます。</p>
+
+  <div class="warn-box">
+    <div class="box-head">⚠️ 注意点</div>
+    iPhone 14のときは「ごちゅあり」後にキャンセルされたケースもありました。届くことは確実ではありません。
+  </div>
+
+  <p>「即ごちゅありが来る方法」を有料で販売している人もいますが、Appleのセキュリティはいつ変わるかわからないので、あまり意味がないというのが個人的な見解です。自分で色々検証するか、信頼できる仲間と情報シェアするのが一番です。</p>
+
+  <p>僕も昔入っていた有料のせどりスクールやコンサルで仲良くなった方と情報をシェアしながらやっていますが、状況が日々変わっていることを実感しています。</p>
+</div>
+
+<!-- ⑤ 決済 -->
+<div class="section" id="payment">
+  <div class="sec-num">⑤ 決済のしくみ</div>
+  <h2>「2重決済」の誤解と<br>デビットカードのリスク</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://images.supportfly.io/2022/06/payment-methods.jpg" alt="複数のクレジットカード" onerror="this.style.background:'#ddd'">
+    <div class="sec-img-cap">クレジットカードは複数枚持ちが基本になります</div>
+  </div>
+
+  <h3>クレジットカードの場合</h3>
+
+  <p>現在は注文時に全額分の「オーソリ（有効性確認）」が行われ、実際の引き落としは発送前のタイミングです。</p>
+
+  <p>島流しで注文から発送まで時間が空くと「オーソリの再取得」が発生し、一時的に2回分の枠が押さえられているように見えることがあります。ただしクレジットカードの場合、<strong>実際の引き落としは1回分だけ</strong>です。</p>
+
+  <p>Xで「島流しのせいで支払いが間に合わない」というポストを見かけることがありますが、クレカなら基本的にそれは起きません。勘違いしている人もいれば、本当にそうなっている人もいる、というのが実情です。</p>
+
+  <h3>デビットカードの場合（上級者向け・初心者は使用禁止）</h3>
+
+  <div class="danger-box">
+    <div class="box-head">🚨 初心者はデビットカードを使わないこと</div>
+    デビットカードは口座から即引き落とされるため、2重オーソリが発生すると本当に2倍のお金が引き落とされます。返金まで1〜2ヶ月かかることもあり、その間キャッシュフローが完全に詰まります。<br><br>
+    <strong>転売を続けるための資金がなくなるのが最大の負けパターンです。</strong><br><br>
+    デビットカードを使う理由は「簡単に複数枚作れるから」。有名なのがマネーフォワードビジネスカードで、違う番号のカードを複数作成できます。ただしこれは、融資などで十分な現金を持っている上級者の手法です。初心者は使わないでください。
+  </div>
+</div>
+
+<!-- ⑥ ごちゅあり -->
+<div class="section" id="techniques">
+  <div class="sec-num">⑥ ごちゅありが来やすくなる方法</div>
+  <h2>「一般購入者っぽく見せる」<br>これが全ての基本</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://www.macreports.com/wp-content/uploads/2022/09/How-To-Turn-ON-Private-Browsing-On-iPhone.png" alt="iPhoneのプライベートブラウズ" onerror="this.style.background:'#ddd'">
+    <div class="sec-img-cap">プライベートブラウズを活用するのが基本のひとつ</div>
+  </div>
+
+  <p>Appleは注文時に複数の情報をもとに「同一人物かどうか」を判断しています。大量購入者＝転売ヤーと判断されると島流しになります。逆に言えば、それぞれの情報を変えることで一般購入者と認識されやすくなります。</p>
+
+  <p>確認されている情報は以下の通りです：名前・住所・電話番号・メールアドレス・クレジットカード・IPアドレスなど。これらが異なると、別人と判断されやすくなります。</p>
+
+  <div class="tech-grid">
+    <div class="tech-card">
+      <div class="tech-card-num">Point 01</div>
+      <h4>名前・住所（ジグリ）</h4>
+      <p>漢字・カタカナ・ひらがな・ローマ字などを組み合わせて別人に見せる方法です。ただし<strong>偽名・偽住所は絶対NG</strong>。税務調査で経費計上できなくなるリスクや、詐欺罪になる可能性があります。</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-card-num">Point 02</div>
+      <h4>電話番号</h4>
+      <p>格安SIMを複数契約して番号を増やします。povo2.0なら5回線まで事務手数料無料・220円のトッピングで180日間維持できるため、維持費が最小限です。一度に申し込めるのは2回線まで。</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-card-num">Point 03</div>
+      <h4>メールアドレス</h4>
+      <p>Gmailが一番簡単です。1番号あたり5個程度まで作成できます。「エイリアス（+文字）」を使う方法もありますが、セキュリティが厳しい今はほぼ使えないことが多いです。</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-card-num">Point 04</div>
+      <h4>クレジットカード</h4>
+      <p>複数枚作成して使い分けます。月に1〜2枚のペースで。Apple Payに登録するとカード番号が変わるため、それも有効な手段です。おすすめのカードは後述します。</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-card-num">Point 05</div>
+      <h4>IPアドレス</h4>
+      <p>スマホの機内モードをON→OFFにするだけで変更できます。<code>cman.jp/network/support/go_access.cgi</code> で確認可能。WiFiは必ずOFFにしてから注文してください。</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-card-num">Point 06</div>
+      <h4>プライベートモード</h4>
+      <p>iPhoneのSafariでプライベートブラウズ（Androidはシークレットモード）を使います。Cookie・閲覧履歴・キャッシュが残らないため、同一人物と判定されにくくなります。</p>
+    </div>
+  </div>
+
+  <h3>IDとゲスト注文、どちらが良い？</h3>
+  <p>正直、時期によって変わります。iPhone 14で一番厳しかった時期はApple IDのApple Payが一番ごちゅありが来やすかった印象ですが、今はどちらが有利かが日々変わっている感じです。iPhone 17については、買いすぎているIDはごちゅありが来にくい傾向はあります。</p>
+
+  <h3>注文個数について</h3>
+  <p>セキュリティが厳しい時期は1台からスタート。10台注文するとほぼ島流しになります。まず1台でごちゅありを確認してから、追加で1台注文して様子を見るくらいがちょうど良いです。</p>
+
+  <h3>ごちゅありが来るタイミング</h3>
+  <p>以前は注文後数分で来ることも多かったですが、今は機種ごとに一斉に来るパターンが多い印象です。数時間後の場合もあれば、2日後の場合もあります。</p>
+
+  <h3>おすすめカード：セゾンプラチナビジネスアメックス</h3>
+
+  <p>年会費33,000円（初年度無料）ですが、iPhone転売をやっている人でこのカードを持っていない人はほとんどいないレベルです。</p>
+
+  <ul class="plain">
+    <li>初回から枠100〜500万円が付くことが多い</li>
+    <li>半年程度で1,000万円まで増えることも</li>
+    <li>返金（キャンセル時）が他社より圧倒的に早い（数日で枠が復活）</li>
+    <li>「ビジネス」とあるが審査は個人なので基本的に誰でも申し込み可能</li>
+    <li>このカードを持つと、セゾンデジタル・インターナショナル・コバルトビジネスなど無料のセゾンカードもほぼ審査なしで作れるため、カード番号を一気に増やせる</li>
+  </ul>
+
+  <div class="tip-box">
+    <div class="box-head">💡 ビジネスの基本</div>
+    必要なところにお金を使わずに大きく稼ぐのは難しいです。年会費を惜しまず投資と割り切るのが、稼ぐ人の共通した考え方だと思います。
+  </div>
+</div>
+
+<!-- ⑦ ピックアップ -->
+<div class="section" id="pickup">
+  <div class="sec-num">⑦ ピックアップ（店舗受け取り）</div>
+  <h2>店舗で直接受け取る方法</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://www.apple.com/newsroom/images/product/apple-store/Apple_new-apple-store-ginza_09262020_big.jpg.slideshow-xlarge.jpg" alt="Apple Store 銀座" onerror="this.style.background:'#ddd'">
+    <div class="sec-img-cap">Apple Store 銀座（参考）</div>
+  </div>
+
+  <p>購入したい機種を選択した状態で、近くに在庫があるストアが表示されたら店舗受け取りが可能です。「受け取り方法」で店舗を選択し、決済まで進むだけです。別のストアへの変更も可能です。</p>
+
+  <div class="tip-box">
+    <div class="box-head">📱 在庫が復活しやすい時間帯</div>
+    朝7時〜10時ごろが多く、関東から順次西へ向かって復活するパターンが多いです。Xでピックアップ通知を発信しているアカウントをフォローしておくと便利ですよ。
+  </div>
+
+  <div class="warn-box">
+    <div class="box-head">⚠️ 「電子」に注意</div>
+    大量購入しているアカウントにはAppleから「店舗受け取りは不可・郵送に切り替えます」という電子メールが届くことがあります。これが通称「電子」です。iPhone 17ではこの傾向が特に強く、クリーンなアカウントのほうがピックを取れる可能性が高いです。まだ買ったことのない方はぜひ試してみてください。
+  </div>
+
+  <p>なお、受け取り場所にコンビニが出てきた場合は「ピック」ではなく郵送扱いです。コンビニに配送されるだけなので、島流しも普通に発生します。</p>
+</div>
+
+<!-- ⑧ 買取屋 -->
+<div class="section" id="buyers">
+  <div class="sec-num">⑧ 買取屋の選び方</div>
+  <h2>大手・振り込み早い・実績あり<br>この3つが絶対条件</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://images.squarespace-cdn.com/content/v1/5a34be26e2ccd1ebee03c6f0/1631006307774-0F7GRLKB0XGPYSPZX9KY/trade-in-station.jpg" alt="スマートフォン買取カウンター" onerror="this.style.background:'#ddd'">
+    <div class="sec-img-cap">買取屋での取引イメージ</div>
+  </div>
+
+  <div class="buy-list">
+    <div class="buy-item">
+      <div class="buy-rank">#1</div>
+      <div class="buy-content">
+        <h4>買取一丁目</h4>
+        <p>買取屋の最大手。安定感と実績が群を抜いています。初心者が最初に使うなら間違いないです。</p>
+      </div>
+    </div>
+    <div class="buy-item">
+      <div class="buy-rank">#2</div>
+      <div class="buy-content">
+        <h4>買取商店</h4>
+        <p>入金が早く、今年は買取金額も高め。検品が他社より厳しい印象ですが、iPhoneはそもそも傷がつきにくいのであまり心配しなくて大丈夫です。</p>
+      </div>
+    </div>
+    <div class="buy-item">
+      <div class="buy-rank">#3</div>
+      <div class="buy-content">
+        <h4>モバイルミックス</h4>
+        <p>「iPhoneといえばモバイルミックス」と言われる定番。今年は買取金額がやや弱めですが、安定して使えます。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="box-head">💡 近くに当日現金払いの買取屋があれば最優先</div>
+    安全かつキャッシュフローの観点から、当日現金で受け取れる店頭買取が理想です。郵送買取は銀行振り込みになります。<br><br>
+    基本的に<strong>買取屋のHPで予約した日に発送・翌日着</strong>でないと予約した金額での買取になりません。翌日着が難しいエリアは事前に確認をとってください。
+  </div>
+
+  <div class="danger-box">
+    <div class="box-head">🚨 絶対に使ってはいけない買取屋</div>
+    <ul style="padding-left:18px;line-height:2.1;">
+      <li>オープンチャットやサロン限定の買取屋</li>
+      <li>新規で他社より数千円〜数万円高い買取を提示している業者</li>
+      <li>相場が下がって他社が定価以下なのに定価以上で買取している業者</li>
+      <li>振り込みが1ヶ月後などの業者</li>
+    </ul>
+    <br>
+    これらはポンジスキームの可能性が非常に高く、商品だけ受け取って支払いをせずに逃げるケースが実際に多発しています。僕の知り合いでも、数百万〜数千万円飛ばされた人が何人もいます。<strong>数が多かったら人生が終わるレベルのリスクなので、上記に当てはまる業者には絶対に売らないでください。</strong>
+  </div>
+</div>
+
+<!-- ⑨ リスク -->
+<div class="section" id="risks">
+  <div class="sec-num">⑨ iPhone転売の落とし穴</div>
+  <h2>iPhone転売を「メイン」にしては<br>いけない理由</h2>
+
+  <div class="sec-img-wrap">
+    <img class="sec-img" src="https://www.macreports.com/wp-content/uploads/2021/12/Apple-Pay-Scam-Text-How-to-Protect-Yourself.jpg" alt="詐欺リスクのイメージ" onerror="this.style.background:'#ddd'">
+    <div class="sec-img-cap">甘い話には必ずリスクが伴います</div>
+  </div>
+
+  <p>ここまで良い面を多く説明してきましたが、正直にリスクもお伝えします。</p>
+
+  <div class="sum-grid">
+    <div class="sum-card green">
+      <h4>✅ 今年（iPhone 17）の状況</h4>
+      <ul>
+        <li>4月現在も利益継続中</li>
+        <li>異例の長期利益期間</li>
+        <li>夏まで継続の可能性あり</li>
+      </ul>
+    </div>
+    <div class="sum-card orange">
+      <h4>⚠️ iPhone転売のリスク</h4>
+      <ul>
+        <li>稼げる期間は3ヶ月が基本</li>
+        <li>年によって利益幅が大きく変わる</li>
+        <li>iPhone 15は1ヶ月ちょっとで終了</li>
+        <li>日本の価格が適正化されると利益消滅の可能性</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>「返品できるからリスクゼロ」は間違い</h3>
+
+  <p>定価以下になっても「2週間以内なら返品できる」という意見もあります。公式にも記載されている通りです。ただし——</p>
+
+  <div class="warn-box">
+    <div class="box-head">⚠️ 返品時の落とし穴</div>
+    クレカの締め日のタイミング次第では、一度引き落としが発生した後に返金となるパターンがあります。その場合、一時的に返品金額以上の現金を口座に用意しておく必要があります。枠ギリギリで回していると他の支払いが止まるリスクがあるので、注意してください。
+  </div>
+
+  <p>個人的には、多少の赤字でも売ってしまったほうが良いと考えています。</p>
+
+  <h3>iPhone転売との正しい向き合い方</h3>
+
+  <p><strong>iPhone転売はあくまで「ボーナス」と割り切る。メインは他のせどり・転売手法で安定的に稼ぐ。</strong>これが副業で稼ぎ続けるための正しい考え方だと思っています。</p>
+
+  <p>具体的なステップとしては——</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">iPhone転売で買取屋との取引に慣れる</div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">他の買取商品（スマホ以外）に手を広げる</div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body">Amazonせどりなど、より安定した手法に移行していく（1商品で利益100万円になるケースもあります）</div>
+    </div>
+  </div>
+
+  <p>僕自身、iPhone転売なしの月で月利240万円を出したこともあります。その手法の一部はXで発信していますが、Xでは出しにくい濃い情報を公式LINEで今後発信していく予定です。</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <h3>Xで出せない濃い情報を<br>公式LINEで発信中</h3>
+  <p>iPhone転売に関する情報はセンシティブなため、反響次第では記事自体が削除になる可能性があります。見逃したくない方は今すぐ登録しておいてください。</p>
+  <a href="https://lin.ee/p0dZgNl" class="cta-btn">👉 公式LINEに登録する</a>
+</div>
+
+<!-- フッター -->
+<div class="footer">
+  <div class="tags">
+    <span class="tag">iPhone転売</span>
+    <span class="tag">副業</span>
+    <span class="tag">物販</span>
+    <span class="tag">せどり</span>
+    <span class="tag">2025年</span>
+  </div>
+  <p>長文を最後まで読んでいただきありがとうございました。それではまた。</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
